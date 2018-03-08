@@ -17,28 +17,28 @@ class User < ApplicationRecord
   validates :session_token, presence: true, uniqueness: true
 
   # set session_token before validation if it's not present.
-  after_intialization :ensure_session_token
+  after_initialize :ensure_session_token
 
   attr_reader :password
 
   def self.find_by_credentials(email, password)
-    user = user.find_by(email: email)
+    user = User.find_by(email: email)
     return user if user && user.is_password?(password)
     nil
   end
 
   def self.generate_session_token
-    SecureRandom::urlsafe_base64
+    SecureRandom.urlsafe_base64(16)
   end
 
   def reset_session_token!
-    self.session_token = User.generate_session_token
+    self.session_token = self.class.generate_session_token
     self.save!
     self.session_token
   end
 
   def ensure_session_token
-    self.session_token ||= self.generate_session_token
+    self.session_token ||= self.class.generate_session_token
   end
 
   def password=(password)

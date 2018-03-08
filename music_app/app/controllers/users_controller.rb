@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(users_params)
+    @user = User.create(user_params)
 
     if @user.save
       login(@user)
@@ -16,6 +16,10 @@ class UsersController < ApplicationController
       flash[:errors] = ["Credentials did not meet requirements."]
       render :new
     end
+  end
+
+  def show
+    render :show
   end
 
   private

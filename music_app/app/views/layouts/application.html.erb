@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MusicApp</title>
+    <title>Music App</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -9,6 +9,24 @@
   </head>
 
   <body>
+
+    <header>
+      <h1>Music App</h1>
+    </header>
+
+    <div>
+      <% if logged_in? %>
+        <p>Logged in as: <%= current_user.email %></p>
+        <form action="<%= session_url %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Logout">
+        </form>
+      <% else %>
+        <%= link_to 'Sign In', new_session_url %>
+        <%= link_to 'Create Profile', new_user_url %>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
