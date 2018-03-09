@@ -1,0 +1,16 @@
+<h2>Add Your Band</h2>
+
+<form class="" action="<%= bands_url %>" method="post">
+  <%= auth_token %>
+
+  <p>
+    <label>Artist Name:
+      <input type="text" name="band[name]">
+    </label>
+  </p>
+
+  <br>
+  <br>
+  <input type="submit" value="Create Band">
+
+</form>
