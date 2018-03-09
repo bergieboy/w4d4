@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+h1 {
+  font-family: 'Monoton', cursive;
+  font-size: 7em;
+  font-weight: normal;
+  text-align: center;
+}
+
+h2, label, a {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+section, form {
+  text-align: center;
+}
+
+label {
+  font-size: 10;
+}
+
+input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid black;
+}

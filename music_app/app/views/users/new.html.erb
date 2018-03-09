@@ -1,15 +1,15 @@
-<h1>Create Profile</h1>
+<h2>Create Profile</h2>
 
 <form class="" action="<%= users_url %>" method="post">
-
+  <%= auth_token %>
+  
   <label>Email:
     <input type="text" name="user[email]">
   </label>
 
   <br>
-  <br>
   <label>Password:
-    <input type="text" name="user[password]">
+    <input type="password" name="user[password]">
   </label>
 
   <br>
